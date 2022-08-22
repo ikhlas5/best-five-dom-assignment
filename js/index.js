@@ -27,14 +27,22 @@ function displayPlayer(){
 
 function addToCart(element){
     const bestPlayerName = element.parentNode.parentNode.children[0].innerText;
+    const player = bestPlayerName;
     
          const playerName = {
         playerNameObjcet: bestPlayerName
     }
-    // playerList.push(playerName);
-        // playerList.push(plyer);
-        // element.disabled = true;
-        // element.style.backgroundColor= 'grey';
+    playerList.push(playerName);
+
+    // if(playerList.length < 5){
+    //     playerList.push(player);
+    //     element.disabled = true;
+    //     element.style.backgroundColor= 'grey';
+
+    // }
+    // else{
+    //     alert("You Can't Add More Than 5 ")
+    // }
     
     displayPlayer();
 
@@ -65,10 +73,19 @@ function addToCart(element){
 
 document.getElementById('btn-calculate').addEventListener('click', function(){
     const perPlayerBadget =  perPlayerBadgetInput('per-player-field');
-    const perPlayerAmount = perPlayerBadget * playerList.length;
+    if(playerList.length < 6 && perPlayerBadget >= 0 ){
+
+        const perPlayerAmount = perPlayerBadget * playerList.length;
+        document.getElementById('player-expenses').innerText = perPlayerAmount;
+    }
+    else{
+        alert('Please enter cost for each player!!')
+    }
+
+    
           
-    const playerExpeneces = getTextFieldById('player-expenses');
-    setPerPlayerAmout('player-expenses', perPlayerAmount);
+    // const playerExpeneces = getTextFieldById('player-expenses');
+    // setPerPlayerAmout('player-expenses', perPlayerAmount);
 })
 
 document.getElementById('btn-calculate-total').addEventListener('click', function(){
