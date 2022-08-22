@@ -7,7 +7,7 @@ function displayProduct(){
 
     if(5 < cart.length){
         alert('you are select five player only')
-        return ;
+        return
     }
    
 
