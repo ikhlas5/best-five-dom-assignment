@@ -1,6 +1,7 @@
 //  set player Name
  const playerList = [];
 
+//  dispaly player Name
 function displayPlayer(){
     const cardTable = document.getElementById('products-cart');
     cardTable.textContent='';
@@ -24,7 +25,7 @@ function displayPlayer(){
 
 }
 
-
+// player name collection
 function addToCart(element){
     const bestPlayerName = element.parentNode.parentNode.children[0].innerText;
     const player = bestPlayerName;
@@ -59,18 +60,20 @@ function addToCart(element){
         return playerInputNumber;
     }
 
+    // total ammout k  string theke number convert
     function getTextFieldById(textId){
         const textTotalElement= document.getElementById(textId);
         const textFieldString = textTotalElement.innerText;
         const textFeildNumber = parseFloat(textFieldString);
         return textFeildNumber;
     }
-
+// sum korar por man k set kore
     function setPerPlayerAmout(elementId,value){
         const setPlayerExprnces = document.getElementById(elementId);
         setPlayerExprnces.innerText=value;
     }
 
+    // button calculate
 document.getElementById('btn-calculate').addEventListener('click', function(){
     const perPlayerBadget =  perPlayerBadgetInput('per-player-field');
     if(playerList.length < 6 && perPlayerBadget >= 0 ){
@@ -82,12 +85,11 @@ document.getElementById('btn-calculate').addEventListener('click', function(){
         alert('Please enter cost for each player!!')
     }
 
-    
-          
     // const playerExpeneces = getTextFieldById('player-expenses');
     // setPerPlayerAmout('player-expenses', perPlayerAmount);
 })
 
+// total button calculate
 document.getElementById('btn-calculate-total').addEventListener('click', function(){
     const managerInputField = perPlayerBadgetInput('manager-field');
     const coachInputField = perPlayerBadgetInput('coach-field');
