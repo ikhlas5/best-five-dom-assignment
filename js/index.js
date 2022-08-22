@@ -1,23 +1,24 @@
 //  set player Name
- const cart = [];
+ const playerList = [];
 
-function displayProduct(){
+function displayPlayer(){
     const cardTable = document.getElementById('products-cart');
     cardTable.textContent='';
-
-    if(5 < cart.length){
-        alert('you are select five player only')
-        return
-    }
    
-
-    for(let i = 0; i<cart.length; i++){
+    for(let i = 0; i<playerList.length; i++){
             const tr = document.createElement('tr');
             tr.innerHTML = `
-            <th>${i+1}</th>
-            <td>${cart[i].playerNameObjcet}</td>
+            <th>${i+1}.</th>
+            <td>${playerList[i].playerNameObjcet}</td>
             `;
-            cardTable.appendChild(tr);
+            if(i < 5){
+
+                cardTable.appendChild(tr);
+            }
+            else{
+                alert('you are not selected more than 5 player');
+                break;
+            }
           
     }
 
@@ -26,12 +27,17 @@ function displayProduct(){
 
 function addToCart(element){
     const bestPlayerName = element.parentNode.parentNode.children[0].innerText;
-
-    const playerName = {
+    
+         const playerName = {
         playerNameObjcet: bestPlayerName
     }
-    cart.push(playerName);
-    displayProduct();
+    // playerList.push(playerName);
+        // playerList.push(plyer);
+        // element.disabled = true;
+        // element.style.backgroundColor= 'grey';
+    
+    displayPlayer();
+
 }
 // player budget calculation
     function perPlayerBadgetInput(inputId){
@@ -59,7 +65,7 @@ function addToCart(element){
 
 document.getElementById('btn-calculate').addEventListener('click', function(){
     const perPlayerBadget =  perPlayerBadgetInput('per-player-field');
-    const perPlayerAmount = perPlayerBadget * cart.length;
+    const perPlayerAmount = perPlayerBadget * playerList.length;
           
     const playerExpeneces = getTextFieldById('player-expenses');
     setPerPlayerAmout('player-expenses', perPlayerAmount);
@@ -74,7 +80,7 @@ document.getElementById('btn-calculate-total').addEventListener('click', functio
         alert('please input number')
     }
 
-    const perPlayerAmount = perPlayerBadget * cart.length;
+    const perPlayerAmount = perPlayerBadget * playerList.length;
     const totalAmount = managerInputField + coachInputField + perPlayerAmount;
    
 
